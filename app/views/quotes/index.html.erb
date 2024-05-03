@@ -1,7 +1,11 @@
 <main class="container">
   <h1>Quotes</h1>
 
-  <%= render @quotes %>
+  <%= turbo_frame_tag "first" do %>
+    <%= render @quotes %>
+  <% end %>
 
-  <%= link_to "New quote", new_quote_path, data: { turbo_frame: "first" } %>
+  <%= turbo_frame_tag "second" do %>
+      <%= link_to "New quote", new_quote_path, data: { turbo_frame: "first" } %>
+  <% end %>
 </main>
