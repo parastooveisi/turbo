@@ -4,7 +4,7 @@
     <%= button_to "Delete",
                   quote_path(quote),
                   method: :delete%>
-    <%= turbo_frame_tag "quote-#{quote.id}" do%>
+    <%= turbo_frame_tag quote do%>
       <%= link_to "Edit",
                   edit_quote_path(quote)%>
     <% end %>
