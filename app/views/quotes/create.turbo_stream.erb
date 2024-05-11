@@ -1,7 +1,27 @@
-<%= turbo_stream.prepend "quotes", partial: "quotes/quote", locals: { quote: @quote } %>
+<%= turbo_stream.prepend "quotes" do %>
+  <%= render @quote %>
+<% end %>
+
 <%= turbo_stream.update Quote.new, "" %>
 
 <%#
   The first line tells Turbo to prepend the app/views/quotes/_quote.html.erb to the Turbo Frame with id `quotes`.
   The second line tells Turbo to update the Turbo Frame with id new_quote with empty content. - This will clear the form.
 %>
+
+<%#
+In Rails
+`render partial: "quotes/quote", locals: { quote: @quote }`
+and
+`render @quote`
+are equivalent.
+%>
+
+<!--
+<%= turbo_stream.prepend "quotes" do %>
+  <%= render @quote %>
+<% end %>
+and
+<%= turbo_stream.prepend "quotes", @quote %>
+are also equivalent.
+-->
